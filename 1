@@ -1,0 +1,31 @@
+def solution(m, n, count):
+    maxcount = sum([i + 1 for i in range(m)]) + (n - 1) * m
+    mincount = sum([i + 1 for i in range(m)]) + (n - 1) * 1
+
+    if count < mincount or count > maxcount:
+        return ""
+    res = count - mincount
+    s = n - 1
+    t = m - 1
+    down1 = res // s
+    if res % s == 0:
+            down2 = 0
+    else:
+            down2 = 1
+    step = "D" * down1 + "R" * (s - res % s) + "D" * down2 + "R" * (res % s) + "D" * (t - down1 - down2)
+    return step
+
+for i in range(0,4):
+    m = 9
+    n = 9
+    count = (65, 72, 90, 100)
+    print(solution(m,n,count[i]))
+# the first question
+for i in range(0,2):
+    m = 90000
+    n = 100000
+    count = (87127231192,5994891682.)
+print(solution(m, n, count[i]))
+# the second question
+# TypeError: can't multiply sequence by non-int of type 'float'
+# maybe it Not in the maximum and minimum range
